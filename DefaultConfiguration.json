@@ -1,0 +1,84 @@
+{
+    "Configuration": {
+        "Debug": {
+
+            "Flags": {
+                "Physics": true,
+                "Gui": true,
+                "SuppressUI": false,
+                "BuildId": -1,
+                "MetricGather": false
+            },
+
+            "Logging": {
+                "Filters": [],
+                "Level": "DBUG",
+                "Outputs": {
+                    "TestOutputDebug": {},
+                    "imgui::OutputConsole": {},
+                    "ylog::OutputConsole": {},
+                    "ylog::OutputDebug": {
+                        "split_log": "true"
+                    },
+                    "ylog::OutputFile": {
+                        "max_startup_size": "0",
+                        "filename": "$(LogFolder)/$(AppName).log"
+                    }
+                }
+            },
+
+            "Threads": {
+                "VTSSections": 0,
+                "VTS": 0,
+                "Blob": 0,
+                "App": 0
+            }
+        },
+
+        "Init": {
+            "LogicTick": 60,
+            "Aliases": {
+                "$(AppRootFolder)": "$(ConfigurationFolder)",
+                "$(LogFolder)": "$(AppRootFolder)/Logs/$(AppName)",
+                "$(AssetFolder)": "$(AppRootFolder)/Assets",
+                "$(ShaderFolder)": "$(AssetFolder)/Shaders/$(BuildConfiguration)",
+                "$(DatabaseFolder)": "$(AssetFolder)/Database",
+                "$(TextureFolder)": "$(AssetFolder)/Textures",
+                "$(TestFolder)": "$(AppRootFolder)/Tests/$(AppName)",
+                "$(DataFolder)": "$(AppRootFolder)/Data/$(AppName)"
+            },
+
+            "VTS": [
+                {
+                    "Settings": {
+                        "Path": [ "$(ConfigurationFolder)" ],
+                        "ReadOnly": false,
+                        "Recursive": false,
+                        "Filters": [ "*.json" ],
+                        "Converters": "JSON"
+                    }
+                },
+
+                {
+                    "Fonts": {
+                        "Path": [ "$(AssetFolder)/Fonts" ],
+                        "ReadOnly": true,
+                        "Recursive": true,
+                        "Filters": [ "*.ttf" ],
+                        "Converters": "FONT"
+                    }
+                },
+
+                {
+                    "FontFaces": {
+                        "Path": [ "$(AssetFolder)/Fonts" ],
+                        "ReadOnly": true,
+                        "Recursive": true,
+                        "Filters": [ "*.face" ],
+                        "Converters": "FONTFACE"
+                    }
+                }
+            ]
+        }
+    }
+}
